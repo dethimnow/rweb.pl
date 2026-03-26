@@ -7,11 +7,15 @@ import {
   PHONE_E164,
 } from "@/lib/site";
 import { ContactForm } from "@/components/site/ContactForm";
+import { TechLogoGrid } from "@/components/site/TechLogos";
 import {
   ContactOrb,
   DotField,
+  GraphicArcDots,
   GraphicCaseStack,
+  GraphicCornerCards,
   GraphicPillarAI,
+  GraphicPillarAccent,
   GraphicPillarApps,
   GraphicPillarSites,
   GraphicProcessStep,
@@ -90,7 +94,8 @@ export function OfferPillars() {
           {pillars.map((p) => {
             const Art = pillarArt[p.graphic];
             return (
-            <article key={p.title} className={card}>
+            <article key={p.title} className={`${card} relative overflow-hidden`}>
+              <GraphicCornerCards className="pointer-events-none absolute -right-4 -top-2 h-24 w-28 opacity-[0.55] sm:right-0 sm:top-0" />
               <div className="mb-6 flex justify-center rounded-2xl border border-black/[0.06] bg-white/90 py-5 shadow-[0px_8px_30px_rgba(194,194,194,0.12)]">
                 <Art className="h-[4.5rem] w-auto" />
               </div>
@@ -154,6 +159,14 @@ export function AIBusiness() {
     >
       <SectionHaze tone="dark" />
       <DotField tone="dark" />
+      <GraphicArcDots
+        variant="dark"
+        className="pointer-events-none absolute -right-6 top-24 h-36 w-[min(100%,20rem)] opacity-90 sm:right-2"
+      />
+      <GraphicArcDots
+        variant="dark"
+        className="pointer-events-none absolute -left-10 bottom-16 h-32 w-[min(100%,18rem)] -scale-x-100 opacity-75 sm:left-0"
+      />
       <div className={shell}>
         <h2 id="ai-heading" className={`${h2} text-white`}>
           <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-white/80">
@@ -346,17 +359,6 @@ export function Process() {
   );
 }
 
-const tech = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Python",
-  "OpenAI API",
-  "WordPress",
-  "PostgreSQL",
-  "Vercel",
-];
-
 export function TechTrust() {
   return (
     <section
@@ -364,6 +366,11 @@ export function TechTrust() {
       aria-labelledby="tech-heading"
     >
       <GraphicTechOrbit className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[min(100%,28rem)] -translate-x-1/2 -translate-y-1/2 opacity-[0.55] sm:h-56" />
+      <GraphicArcDots className="pointer-events-none absolute -right-8 bottom-0 h-32 w-[min(100%,20rem)] opacity-80 sm:right-4 sm:h-36" />
+      <GraphicArcDots className="pointer-events-none absolute -left-12 top-8 h-28 w-[min(100%,18rem)] -scale-x-100 opacity-70 sm:left-0" />
+      <div className="pointer-events-none absolute inset-0 opacity-50">
+        <DotField tone="light" />
+      </div>
       <SectionHaze tone="muted" />
       <div className={shell}>
         <h2
@@ -378,16 +385,7 @@ export function TechTrust() {
         <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-[#373a46]/75">
           Stos dobieramy do projektu — poniżej typowe elementy stacku.
         </p>
-        <ul className="mt-12 flex flex-wrap justify-center gap-3">
-          {tech.map((t) => (
-            <li
-              key={t}
-              className="rounded-[40px] border border-black/[0.08] bg-[#fcfcfc] px-5 py-2.5 text-sm font-medium text-[#0f172a] shadow-[0px_6px_24px_rgba(194,194,194,0.2)]"
-            >
-              {t}
-            </li>
-          ))}
-        </ul>
+        <TechLogoGrid />
       </div>
     </section>
   );
@@ -413,6 +411,7 @@ export function Testimonials() {
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <figure className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_8px_28px_rgba(194,194,194,0.14)]">
+            <GraphicPillarAccent className="pointer-events-none absolute bottom-6 left-3 h-24 w-10 opacity-70" />
             <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
             <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Wreszcie ktoś wytłumaczył nam AI bez slajdów pełnych buzzwordów.
@@ -423,6 +422,7 @@ export function Testimonials() {
             </figcaption>
           </figure>
           <figure className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_8px_28px_rgba(194,194,194,0.14)]">
+            <GraphicCornerCards className="pointer-events-none absolute -bottom-2 -right-1 h-20 w-24 rotate-180 opacity-50" />
             <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
             <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Strona i panel pod nasze zamówienia działają stabilnie. Kontakt

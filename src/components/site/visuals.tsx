@@ -485,3 +485,125 @@ export function ContactOrb({ className }: { className?: string }) {
     </div>
   );
 }
+
+/** Miękkie „karty” w rogu — lekki ruch wizualny bez krzykliwego koloru. */
+export function GraphicCornerCards({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 120 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <rect
+        x="52"
+        y="8"
+        width="48"
+        height="36"
+        rx="6"
+        transform="rotate(8 76 26)"
+        className="stroke-[#0f172a]/[0.1] fill-white/60"
+        strokeWidth="1"
+      />
+      <rect
+        x="28"
+        y="28"
+        width="52"
+        height="40"
+        rx="7"
+        transform="rotate(-6 54 48)"
+        className="stroke-[#0f172a]/[0.12] fill-[#fcfcfc]"
+        strokeWidth="1.1"
+      />
+      <rect
+        x="12"
+        y="52"
+        width="44"
+        height="32"
+        rx="6"
+        transform="rotate(4 34 68)"
+        className="stroke-[#0f172a]/[0.08] fill-[#0f172a]/[0.02]"
+        strokeWidth="1"
+      />
+    </svg>
+  );
+}
+
+/** Łuki i kropki — tło sekcji tech / realizacji (jasne) lub AI (ciemne). */
+export function GraphicArcDots({
+  className,
+  variant = "light",
+}: {
+  className?: string;
+  variant?: "light" | "dark";
+}) {
+  const arc1 =
+    variant === "dark" ? "stroke-white/[0.09]" : "stroke-[#0f172a]/[0.07]";
+  const arc2 =
+    variant === "dark" ? "stroke-white/[0.06]" : "stroke-[#0f172a]/[0.05]";
+  const d1 = variant === "dark" ? "fill-white/10" : "fill-[#0f172a]/10";
+  const d2 = variant === "dark" ? "fill-white/08" : "fill-[#0f172a]/08";
+  const d3 = variant === "dark" ? "fill-white/09" : "fill-[#0f172a]/09";
+  const d4 = variant === "dark" ? "fill-white/06" : "fill-[#0f172a]/06";
+  const d5 = variant === "dark" ? "fill-white/07" : "fill-[#0f172a]/07";
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 240 140"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M-10 120c40-48 100-72 180-72s140 24 180 72"
+        className={arc1}
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M20 96c32-28 78-42 130-42s98 14 130 42"
+        className={arc2}
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <circle cx="48" cy="38" r="2.5" className={d1} />
+      <circle cx="120" cy="22" r="2" className={d2} />
+      <circle cx="192" cy="44" r="2.5" className={d3} />
+      <circle cx="168" cy="88" r="1.8" className={d4} />
+      <circle cx="72" cy="102" r="1.8" className={d5} />
+    </svg>
+  );
+}
+
+/** Pionowe „szlify” — akcent przy kartach opinii. */
+export function GraphicPillarAccent({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 48 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <rect
+        x="14"
+        y="8"
+        width="6"
+        height="104"
+        rx="3"
+        className="fill-[#0f172a]/[0.04]"
+      />
+      <rect
+        x="28"
+        y="24"
+        width="6"
+        height="72"
+        rx="3"
+        className="fill-[#0f172a]/[0.06]"
+      />
+      <circle cx="17" cy="18" r="3" className="fill-[#0f172a]/08" />
+      <circle cx="31" cy="98" r="3" className="fill-[#0f172a]/07" />
+    </svg>
+  );
+}
