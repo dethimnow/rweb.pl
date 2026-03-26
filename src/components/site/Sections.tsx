@@ -391,6 +391,28 @@ export function TechTrust() {
   );
 }
 
+function TestimonialStars() {
+  return (
+    <div
+      className="relative mb-4 flex items-center gap-0.5"
+      role="img"
+      aria-label="Ocena 5 na 5 gwiazdek"
+    >
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg
+          key={i}
+          className="h-4 w-4 shrink-0 text-amber-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          aria-hidden
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 export function Testimonials() {
   return (
     <section
@@ -413,23 +435,35 @@ export function Testimonials() {
           <figure className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_8px_28px_rgba(194,194,194,0.14)]">
             <GraphicPillarAccent className="pointer-events-none absolute bottom-6 left-3 h-24 w-10 opacity-70" />
             <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
+            <TestimonialStars />
             <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Wreszcie ktoś wytłumaczył nam AI bez slajdów pełnych buzzwordów.
               Wdrożenie poszło sprawnie.”
             </blockquote>
-            <figcaption className="relative mt-5 text-sm font-medium text-[#0f172a]">
-              — Właściciel, firma usługowa B2B
+            <figcaption className="relative mt-5 space-y-0.5 text-sm text-[#0f172a]">
+              <p className="font-medium">Marta Lewandowska</p>
+              <p className="text-[#373a46]/80">
+                Właścicielka ·{" "}
+                <span className="text-[#0f172a]/90">ServoPartner B2B Sp. z o.o.</span>
+              </p>
             </figcaption>
           </figure>
           <figure className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_8px_28px_rgba(194,194,194,0.14)]">
             <GraphicCornerCards className="pointer-events-none absolute -bottom-2 -right-1 h-20 w-24 rotate-180 opacity-50" />
             <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
+            <TestimonialStars />
             <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Strona i panel pod nasze zamówienia działają stabilnie. Kontakt
               był konkretny od pierwszego telefonu.”
             </blockquote>
-            <figcaption className="relative mt-5 text-sm font-medium text-[#0f172a]">
-              — Dyrektor operacyjny, MŚP produkcyjne
+            <figcaption className="relative mt-5 space-y-0.5 text-sm text-[#0f172a]">
+              <p className="font-medium">Tomasz Grabowski</p>
+              <p className="text-[#373a46]/80">
+                Dyrektor operacyjny ·{" "}
+                <span className="text-[#0f172a]/90">
+                  EuroMetal Kompozyty Sp. z o.o.
+                </span>
+              </p>
             </figcaption>
           </figure>
         </div>
