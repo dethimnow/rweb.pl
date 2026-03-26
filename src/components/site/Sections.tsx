@@ -1,72 +1,65 @@
-import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/site";
+import type { ComponentType } from "react";
+import { Suspense } from "react";
+import {
+  CONTACT_EMAIL,
+  CONTACT_MAILTO,
+  PHONE_DISPLAY,
+  PHONE_E164,
+} from "@/lib/site";
+import { ContactForm } from "@/components/site/ContactForm";
+import {
+  ContactOrb,
+  DotField,
+  GraphicCaseStack,
+  GraphicPillarAI,
+  GraphicPillarApps,
+  GraphicPillarSites,
+  GraphicProcessStep,
+  GraphicScenarioOffice,
+  GraphicScenarioSales,
+  GraphicScenarioSupport,
+  GraphicTechOrbit,
+  QuoteGlyph,
+  SectionHaze,
+} from "@/components/site/visuals";
 
-export function Hero() {
-  return (
-    <section
-      className="relative overflow-hidden border-b border-border bg-gradient-to-b from-white to-slate-50"
-      aria-labelledby="hero-heading"
-    >
-      <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-teal-600/5 blur-3xl" />
-      <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-        <p className="text-sm font-medium uppercase tracking-wider text-accent">
-          Agencja dla MŚP
-        </p>
-        <h1
-          id="hero-heading"
-          className="mt-4 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-navy sm:text-4xl lg:text-5xl"
-        >
-          Budujemy przyszłość Twojej firmy: strony, aplikacje i inteligentna
-          automatyzacja AI.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Pomagamy małym i średnim firmom skalować biznes dzięki nowoczesnym
-          technologiom i wdrażaniu sztucznej inteligencji, która realnie
-          oszczędza czas.
-        </p>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <a
-            href="#kontakt"
-            className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-teal-900/15 transition-colors hover:bg-accent-hover"
-          >
-            Umów się na bezpłatną konsultację AI
-          </a>
-          <a
-            href="#realizacje"
-            className="inline-flex items-center justify-center rounded-full border-2 border-navy/15 bg-transparent px-8 py-3.5 text-base font-semibold text-navy transition-colors hover:border-navy/30"
-          >
-            Sprawdź nasze realizacje
-          </a>
-        </div>
-        <p className="mt-8 text-sm text-muted">
-          Zadzwoń:{" "}
-          <a
-            href={`tel:${PHONE_E164}`}
-            className="font-semibold text-navy hover:text-accent"
-          >
-            {PHONE_DISPLAY}
-          </a>
-        </p>
-      </div>
-    </section>
-  );
-}
+export { HeroSection as Hero } from "./HeroSection";
+
+const shell = "mx-auto max-w-[1200px] px-5 sm:px-8 relative z-10";
+const h2 =
+  "text-3xl font-medium tracking-[-0.04em] text-[#0f172a] sm:text-[2.25rem] sm:leading-tight";
+const lead = "mt-4 max-w-2xl text-lg leading-relaxed text-[#373a46]/80";
+const card =
+  "rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_10px_40px_5px_rgba(194,194,194,0.16)] transition-shadow duration-300 hover:shadow-[0px_14px_48px_8px_rgba(194,194,194,0.22)]";
+
+const pillarArt: Record<
+  "ai" | "apps" | "sites",
+  ComponentType<{ className?: string }>
+> = {
+  ai: GraphicPillarAI,
+  apps: GraphicPillarApps,
+  sites: GraphicPillarSites,
+};
 
 const pillars = [
   {
     title: "Wdrożenia AI",
+    graphic: "ai" as const,
     offer:
       "Chatboty obsługi klienta, analiza danych, automatyzacja dokumentów i powtarzalnych zadań.",
-    benefit: "Praca 24/7 bez dodatkowych etatów — odpowiedzi i procesy, które skalują się z Tobą.",
+    benefit:
+      "Praca 24/7 bez dodatkowych etatów — odpowiedzi i procesy, które skalują się z Tobą.",
   },
   {
     title: "Aplikacje webowe",
+    graphic: "apps" as const,
     offer:
       "Systemy CRM, dedykowane panele klienta, wewnętrzne narzędzia, aplikacje SaaS.",
     benefit: "Oprogramowanie dopasowane do Twoich procesów, nie odwrotnie.",
   },
   {
     title: "Strony internetowe",
+    graphic: "sites" as const,
     offer:
       "Nowoczesne wizytówki, landing page pod kampanie, sklepy i e-commerce.",
     benefit: "Profesjonalny wizerunek i strona zaprojektowana pod konwersję.",
@@ -77,58 +70,77 @@ export function OfferPillars() {
   return (
     <section
       id="oferta"
-      className="border-b border-border bg-background py-20 sm:py-24"
+      className="relative overflow-hidden border-b border-black/[0.06] bg-white py-20 sm:py-28"
       aria-labelledby="oferta-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2
-          id="oferta-heading"
-          className="text-2xl font-bold tracking-tight text-navy sm:text-3xl"
-        >
-          Oferta: trzy filary
+      <SectionHaze tone="light" />
+      <DotField tone="light" />
+      <div className={shell}>
+        <h2 id="oferta-heading" className={h2}>
+          Oferta:{" "}
+          <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-[#373a46]">
+            trzy filary
+          </span>
         </h2>
-        <p className="mt-3 max-w-2xl text-muted">
+        <p className={lead}>
           Wiemy, w czym możemy pomóc — bez żargonu. Każdy filar ma jasny efekt
           dla Twojego biznesu.
         </p>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {pillars.map((p) => (
-            <article
-              key={p.title}
-              className="rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <h3 className="text-xl font-semibold text-navy">{p.title}</h3>
-              <p className="mt-4 text-sm font-medium text-navy/80">
+        <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-8">
+          {pillars.map((p) => {
+            const Art = pillarArt[p.graphic];
+            return (
+            <article key={p.title} className={card}>
+              <div className="mb-6 flex justify-center rounded-2xl border border-black/[0.06] bg-white/90 py-5 shadow-[0px_8px_30px_rgba(194,194,194,0.12)]">
+                <Art className="h-[4.5rem] w-auto" />
+              </div>
+              <h3 className="text-xl font-medium tracking-[-0.02em] text-[#0f172a]">
+                {p.title}
+              </h3>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#373a46]/60">
                 Co oferujemy?
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
+              <p className="mt-2 text-sm leading-relaxed text-[#373a46]/85">
                 {p.offer}
               </p>
-              <p className="mt-4 text-sm font-medium text-accent">
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.12em] text-[#0f172a]">
                 Korzyść dla Ciebie
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
+              <p className="mt-2 text-sm leading-relaxed text-[#373a46]/85">
                 {p.benefit}
               </p>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
+const scenarioArt: Record<
+  "support" | "office" | "sales",
+  ComponentType<{ className?: string }>
+> = {
+  support: GraphicScenarioSupport,
+  office: GraphicScenarioOffice,
+  sales: GraphicScenarioSales,
+};
+
 const scenarios = [
   {
     title: "Obsługa klienta",
+    graphic: "support" as const,
     text: "Inteligentny asystent na stronie, który zna Twoją ofertę i odpowiada o 3:00 w nocy — zamiast tracenia leadów po godzinach pracy biura.",
   },
   {
     title: "Automatyzacja biura",
+    graphic: "office" as const,
     text: "AI segreguje faktury, wyciąga kluczowe dane ze skanów albo streszcza długie maile od kontrahentów — mniej ręcznego przeklikiwania.",
   },
   {
     title: "Analiza sprzedaży",
+    graphic: "sales" as const,
     text: "Wsparcie w przewidywaniu trendów na podstawie historii zamówień — lepsze decyzje zakupowe i magazynowe.",
   },
 ];
@@ -137,34 +149,46 @@ export function AIBusiness() {
   return (
     <section
       id="ai-dla-biznesu"
-      className="border-b border-border bg-navy py-20 text-white sm:py-24"
+      className="relative overflow-hidden border-b border-white/[0.06] bg-gradient-to-b from-[#0c0c0c] to-[#050505] py-20 text-white sm:py-28"
       aria-labelledby="ai-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2
-          id="ai-heading"
-          className="text-2xl font-bold tracking-tight sm:text-3xl"
-        >
-          AI dla biznesu — konkretne scenariusze
+      <SectionHaze tone="dark" />
+      <DotField tone="dark" />
+      <div className={shell}>
+        <h2 id="ai-heading" className={`${h2} text-white`}>
+          <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-white/80">
+            AI
+          </span>{" "}
+          dla biznesu — konkretne scenariusze
         </h2>
-        <p className="mt-3 max-w-2xl text-slate-400">
+        <p className={`${lead} text-white/55`}>
           Dla wielu właścicieli MŚP „AI” brzmi abstrakcyjnie. Oto przykłady, co
           robi w praktyce.
         </p>
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
-          {scenarios.map((s) => (
+        <ul className="mt-14 grid gap-6 md:grid-cols-3">
+          {scenarios.map((s) => {
+            const SArt = scenarioArt[s.graphic];
+            return (
             <li
               key={s.title}
-              className="rounded-2xl border border-slate-700/80 bg-slate-900/50 p-6"
+              className="rounded-[24px] border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-sm"
             >
-              <h3 className="text-lg font-semibold text-accent">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300">
+              <div className="mb-5 flex items-center gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/[0.1] bg-white/[0.05]">
+                  <SArt className="h-9 w-auto" />
+                </div>
+                <h3 className="text-lg font-medium tracking-[-0.02em] text-white">
+                  {s.title}
+                </h3>
+              </div>
+              <p className="text-sm leading-relaxed text-white/65">
                 {s.text}
               </p>
             </li>
-          ))}
+            );
+          })}
         </ul>
-        <p className="mt-10 text-sm text-slate-500">
+        <p className="mt-12 text-sm text-white/40">
           Dobieramy narzędzia do skali problemu — bez strzelania z armaty do
           muchy.
         </p>
@@ -204,40 +228,51 @@ export function CaseStudies() {
   return (
     <section
       id="realizacje"
-      className="border-b border-border bg-slate-50 py-20 sm:py-24"
+      className="relative overflow-hidden border-b border-black/[0.06] bg-[#f7f7f7] py-20 sm:py-28"
       aria-labelledby="realizacje-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2
-          id="realizacje-heading"
-          className="text-2xl font-bold tracking-tight text-navy sm:text-3xl"
-        >
-          Realizacje — problem, rozwiązanie, efekt
+      <SectionHaze tone="muted" />
+      <div className="opacity-40">
+        <DotField tone="light" />
+      </div>
+      <div className={shell}>
+        <h2 id="realizacje-heading" className={h2}>
+          Realizacje —{" "}
+          <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-[#373a46]">
+            problem, rozwiązanie, efekt
+          </span>
         </h2>
-        <p className="mt-3 max-w-2xl text-muted">
+        <p className={lead}>
           Poniżej przykładowe scenariusze współpracy. Po pierwszych
           udokumentowanych projektach pod Twoją marką łatwo zamienisz je na
           pełne case studies z nazwą klienta (za zgodą).
         </p>
-        <div className="mt-12 space-y-10">
+        <div className="mt-14 space-y-8">
           {cases.map((c, i) => (
             <article
               key={i}
-              className="rounded-2xl border border-border bg-card p-8 shadow-sm"
+              className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 sm:p-10 shadow-[0px_10px_40px_5px_rgba(194,194,194,0.14)]"
             >
-              <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+              <GraphicCaseStack className="pointer-events-none absolute -right-2 top-4 w-32 opacity-[0.35] sm:right-4 sm:w-36" />
+              <span className="relative text-xs font-semibold uppercase tracking-[0.14em] text-[#373a46]/50">
                 Case {i + 1}
               </span>
-              <h3 className="mt-2 font-semibold text-navy">Problem</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
+              <h3 className="relative mt-3 text-sm font-semibold text-[#0f172a]">
+                Problem
+              </h3>
+              <p className="relative mt-1 max-w-[85%] text-sm leading-relaxed text-[#373a46]/85 sm:max-w-none">
                 {c.problem}
               </p>
-              <h3 className="mt-4 font-semibold text-navy">Rozwiązanie</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
+              <h3 className="relative mt-5 text-sm font-semibold text-[#0f172a]">
+                Rozwiązanie
+              </h3>
+              <p className="relative mt-1 max-w-[85%] text-sm leading-relaxed text-[#373a46]/85 sm:max-w-none">
                 {c.solution}
               </p>
-              <h3 className="mt-4 font-semibold text-navy">Wynik</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
+              <h3 className="relative mt-5 text-sm font-semibold text-[#0f172a]">
+                Wynik
+              </h3>
+              <p className="relative mt-1 max-w-[85%] text-sm leading-relaxed text-[#373a46]/85 sm:max-w-none">
                 {c.result}
               </p>
             </article>
@@ -271,31 +306,37 @@ export function Process() {
   return (
     <section
       id="proces"
-      className="border-b border-border bg-background py-20 sm:py-24"
+      className="relative overflow-hidden border-b border-black/[0.06] bg-white py-20 sm:py-28"
       aria-labelledby="proces-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2
-          id="proces-heading"
-          className="text-2xl font-bold tracking-tight text-navy sm:text-3xl"
-        >
-          Proces współpracy
+      <SectionHaze tone="light" />
+      <div className={shell}>
+        <h2 id="proces-heading" className={h2}>
+          Proces{" "}
+          <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-[#373a46]">
+            współpracy
+          </span>
         </h2>
-        <p className="mt-3 max-w-2xl text-muted">
+        <p className={lead}>
           Projekty IT bywają stresujące — dlatego pokazujemy przejrzysty tok
           pracy od pierwszego spotkania.
         </p>
-        <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <li
-              key={s.title}
-              className="relative rounded-2xl border border-border bg-card p-6"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
-                {i + 1}
-              </span>
-              <h3 className="mt-4 font-semibold text-navy">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
+            <li key={s.title} className={card}>
+              <div className="flex items-start justify-between gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-[#2e2e2e] to-[#0d0d0d] text-sm font-semibold text-white shadow-[inset_-2px_-3px_12px_0px_rgba(201,201,201,0.08),inset_2px_2px_6px_0px_rgba(29,29,29,0.24)]">
+                  {i + 1}
+                </span>
+                <GraphicProcessStep
+                  step={(i + 1) as 1 | 2 | 3 | 4}
+                  className="h-11 w-auto shrink-0 opacity-90"
+                />
+              </div>
+              <h3 className="mt-5 text-lg font-medium tracking-[-0.02em] text-[#0f172a]">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#373a46]/85">
                 {s.text}
               </p>
             </li>
@@ -320,24 +361,29 @@ const tech = [
 export function TechTrust() {
   return (
     <section
-      className="border-b border-border bg-slate-50 py-16 sm:py-20"
+      className="relative overflow-hidden border-b border-black/[0.06] bg-[#f7f7f7] py-16 sm:py-24"
       aria-labelledby="tech-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <GraphicTechOrbit className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[min(100%,28rem)] -translate-x-1/2 -translate-y-1/2 opacity-[0.55] sm:h-56" />
+      <SectionHaze tone="muted" />
+      <div className={shell}>
         <h2
           id="tech-heading"
-          className="text-center text-xl font-bold text-navy sm:text-2xl"
+          className="text-center text-2xl font-medium tracking-[-0.04em] text-[#0f172a] sm:text-3xl"
         >
-          Technologie, których używamy
+          Technologie,{" "}
+          <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-[#373a46]">
+            których używamy
+          </span>
         </h2>
-        <p className="mx-auto mt-2 max-w-xl text-center text-sm text-muted">
+        <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-[#373a46]/75">
           Stos dobieramy do projektu — poniżej typowe elementy stacku.
         </p>
-        <ul className="mt-10 flex flex-wrap justify-center gap-3">
+        <ul className="mt-12 flex flex-wrap justify-center gap-3">
           {tech.map((t) => (
             <li
               key={t}
-              className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-navy shadow-sm"
+              className="rounded-[40px] border border-black/[0.08] bg-[#fcfcfc] px-5 py-2.5 text-sm font-medium text-[#0f172a] shadow-[0px_6px_24px_rgba(194,194,194,0.2)]"
             >
               {t}
             </li>
@@ -351,37 +397,40 @@ export function TechTrust() {
 export function Testimonials() {
   return (
     <section
-      className="border-b border-border bg-background py-16 sm:py-20"
+      className="relative overflow-hidden border-b border-black/[0.06] bg-white py-16 sm:py-24"
       aria-labelledby="opinie-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2
-          id="opinie-heading"
-          className="text-2xl font-bold tracking-tight text-navy sm:text-3xl"
-        >
-          Zaufanie i opinie
+      <DotField tone="light" />
+      <div className={shell}>
+        <h2 id="opinie-heading" className={h2}>
+          Zaufanie{" "}
+          <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-[#373a46]">
+            i opinie
+          </span>
         </h2>
-        <p className="mt-3 max-w-2xl text-sm text-muted">
+        <p className={`${lead} text-base`}>
           Tu znajdą się cytaty od klientów (np. z LinkedIn) po pierwszych
           zakończonych projektach — publikujemy wyłącznie za zgodą. Poniżej
           przykład układu; treść możesz podmienić w kodzie lub przez CMS.
         </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <figure className="rounded-2xl border border-dashed border-border bg-card/50 p-6">
-            <blockquote className="text-sm italic leading-relaxed text-muted">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <figure className="relative overflow-hidden rounded-[24px] border border-dashed border-black/[0.12] bg-[#fcfcfc] p-8">
+            <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
+            <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Wreszcie ktoś wytłumaczył nam AI bez slajdów pełnych buzzwordów.
               Wdrożenie poszło sprawnie.”
             </blockquote>
-            <figcaption className="mt-4 text-sm font-medium text-navy">
+            <figcaption className="relative mt-5 text-sm font-medium text-[#0f172a]">
               — Właściciel, firma usługowa B2B
             </figcaption>
           </figure>
-          <figure className="rounded-2xl border border-dashed border-border bg-card/50 p-6">
-            <blockquote className="text-sm italic leading-relaxed text-muted">
+          <figure className="relative overflow-hidden rounded-[24px] border border-dashed border-black/[0.12] bg-[#fcfcfc] p-8">
+            <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
+            <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Strona i panel pod nasze zamówienia działają stabilnie. Kontakt
               był konkretny od pierwszego telefonu.”
             </blockquote>
-            <figcaption className="mt-4 text-sm font-medium text-navy">
+            <figcaption className="relative mt-5 text-sm font-medium text-[#0f172a]">
               — Dyrektor operacyjny, MŚP produkcyjne
             </figcaption>
           </figure>
@@ -395,31 +444,58 @@ export function ContactCTA() {
   return (
     <section
       id="kontakt"
-      className="bg-gradient-to-b from-white to-slate-100 py-20 sm:py-28"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-[#f0f0f0] py-20 sm:py-28"
       aria-labelledby="kontakt-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl rounded-3xl border border-border bg-card p-8 shadow-xl sm:p-12">
+      <ContactOrb className="absolute inset-0" />
+      <div className={shell}>
+        <div className="relative mx-auto max-w-[640px] rounded-[28px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_10px_40px_5px_rgba(194,194,194,0.2)] sm:p-12">
           <h2
             id="kontakt-heading"
-            className="text-center text-2xl font-bold text-navy sm:text-3xl"
+            className="text-center text-3xl font-medium tracking-[-0.04em] text-[#0f172a] sm:text-4xl"
           >
-            Bezpłatna konsultacja AI
+            Bezpłatna konsultacja{" "}
+            <span className="[font-family:var(--font-instrument-serif),serif] font-normal italic text-[#373a46]">
+              AI
+            </span>
           </h2>
-          <p className="mx-auto mt-4 text-center text-muted">
+          <p className="mx-auto mt-5 max-w-md text-center text-[#373a46]/80">
             Opowiedz, co zajmuje Twój zespół czasem „na piechotę”. Wstępnie
             ocenimy, czy automatyzacja lub AI ma sens — bez zobowiązań.
           </p>
-          <div className="mt-10 flex flex-col items-center gap-4">
+          <Suspense
+            fallback={
+              <div
+                className="mt-10 h-64 animate-pulse rounded-2xl bg-black/[0.04]"
+                aria-hidden
+              />
+            }
+          >
+            <ContactForm />
+          </Suspense>
+          <div className="relative my-10 flex items-center gap-4">
+            <span className="h-px flex-1 bg-black/[0.08]" />
+            <span className="text-xs font-medium uppercase tracking-[0.14em] text-[#373a46]/50">
+              Albo
+            </span>
+            <span className="h-px flex-1 bg-black/[0.08]" />
+          </div>
+          <div className="flex flex-col items-center gap-4">
             <a
               href={`tel:${PHONE_E164}`}
-              className="inline-flex w-full max-w-sm items-center justify-center rounded-full bg-accent py-4 text-lg font-semibold text-white transition-colors hover:bg-accent-hover sm:w-auto sm:px-12"
+              className="inline-flex w-full max-w-sm items-center justify-center rounded-[40px] bg-gradient-to-b from-[#2e2e2e] via-[#1a1a1a] to-[#0d0d0d] py-4 text-lg font-semibold text-white shadow-[inset_-4px_-6px_25px_0px_rgba(201,201,201,0.08),inset_4px_4px_10px_0px_rgba(29,29,29,0.24)] transition-[filter] hover:brightness-110 sm:w-auto sm:px-14"
             >
               Zadzwoń: {PHONE_DISPLAY}
             </a>
-            <p className="text-center text-sm text-muted">
-              Możesz też napisać wiadomość na LinkedIn lub maila — podaj preferowany
-              kanał przy pierwszym kontakcie.
+            <p className="text-center text-sm text-[#373a46]/70">
+              Napisz bezpośrednio na{" "}
+              <a
+                href={CONTACT_MAILTO}
+                className="font-medium text-[#0f172a] underline decoration-black/[0.15] underline-offset-2 transition-colors hover:decoration-[#0f172a]"
+              >
+                {CONTACT_EMAIL}
+              </a>
+              {" — "}odpowiemy w ciągu jednego dnia roboczego.
             </p>
           </div>
         </div>
