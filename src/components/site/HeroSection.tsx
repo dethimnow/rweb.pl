@@ -85,11 +85,10 @@ export function HeroSection() {
       </div>
 
       <motion.div
-        className="mx-auto flex min-h-screen max-w-[1200px] flex-col items-center px-5 sm:px-8"
+        className="mx-auto flex min-h-[100dvh] max-w-[1200px] flex-col items-center px-5 pt-20 gap-5 sm:px-8 sm:pt-28 sm:gap-6 md:pt-36 md:gap-7 lg:gap-8 lg:pt-[290px]"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        style={{ paddingTop: 290, gap: 32 }}
       >
         <motion.p
           variants={item}
@@ -112,7 +111,7 @@ export function HeroSection() {
               przyszłość
             </span>
           </span>
-          <span className="mt-2 block text-[clamp(1.65rem,3.4vw,3.25rem)] font-medium leading-[1.12] text-[#0f172a]">
+          <span className="mt-1.5 block text-[clamp(1.5rem,3.2vw,3.25rem)] font-medium leading-[1.15] text-[#0f172a] sm:mt-2">
             Twojej firmy: strony, aplikacje i inteligentna automatyzacja AI.
           </span>
         </motion.h1>
@@ -178,7 +177,7 @@ export function HeroSection() {
             </a>
           </div>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+          <div className="mt-6 flex flex-col items-center gap-3 sm:mt-8 sm:flex-row sm:justify-center sm:gap-4">
             <div className="flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/80 px-4 py-2 text-sm font-medium text-[#373a46] shadow-sm backdrop-blur-sm">
               <StarRow />
               <span>Zaufanie MŚP z całej Polski</span>

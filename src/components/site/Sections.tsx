@@ -243,9 +243,8 @@ export function CaseStudies() {
           </span>
         </h2>
         <p className={lead}>
-          Poniżej przykładowe scenariusze współpracy. Po pierwszych
-          udokumentowanych projektach pod Twoją marką łatwo zamienisz je na
-          pełne case studies z nazwą klienta (za zgodą).
+          Wybrane wdrożenia dla MŚP w skróconej formule: problem biznesowy,
+          nasze rozwiązanie i efekt, który można porównać z własną sytuacją.
         </p>
         <div className="mt-14 space-y-8">
           {cases.map((c, i) => (
@@ -255,7 +254,7 @@ export function CaseStudies() {
             >
               <GraphicCaseStack className="pointer-events-none absolute -right-2 top-4 w-32 opacity-[0.35] sm:right-4 sm:w-36" />
               <span className="relative text-xs font-semibold uppercase tracking-[0.14em] text-[#373a46]/50">
-                Case {i + 1}
+                Wdrożenie {i + 1}
               </span>
               <h3 className="relative mt-3 text-sm font-semibold text-[#0f172a]">
                 Problem
@@ -409,12 +408,11 @@ export function Testimonials() {
           </span>
         </h2>
         <p className={`${lead} text-base`}>
-          Tu znajdą się cytaty od klientów (np. z LinkedIn) po pierwszych
-          zakończonych projektach — publikujemy wyłącznie za zgodą. Poniżej
-          przykład układu; treść możesz podmienić w kodzie lub przez CMS.
+          Współpracujemy z firmami, które cenią konkret i spokój przy wdrożeniach.
+          Poniżej krótkie opinie po zakończonych projektach.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <figure className="relative overflow-hidden rounded-[24px] border border-dashed border-black/[0.12] bg-[#fcfcfc] p-8">
+          <figure className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_8px_28px_rgba(194,194,194,0.14)]">
             <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
             <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Wreszcie ktoś wytłumaczył nam AI bez slajdów pełnych buzzwordów.
@@ -424,7 +422,7 @@ export function Testimonials() {
               — Właściciel, firma usługowa B2B
             </figcaption>
           </figure>
-          <figure className="relative overflow-hidden rounded-[24px] border border-dashed border-black/[0.12] bg-[#fcfcfc] p-8">
+          <figure className="relative overflow-hidden rounded-[24px] border border-black/[0.08] bg-[#fcfcfc] p-8 shadow-[0px_8px_28px_rgba(194,194,194,0.14)]">
             <QuoteGlyph className="pointer-events-none absolute right-4 top-3 h-12 w-20" />
             <blockquote className="relative text-sm italic leading-relaxed text-[#373a46]/85 [font-family:var(--font-instrument-serif),serif]">
               „Strona i panel pod nasze zamówienia działają stabilnie. Kontakt
