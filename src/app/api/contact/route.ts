@@ -11,6 +11,33 @@ function escapeHtml(s: string) {
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+/** Resend na darmowym „onboarding” pozwala wysyłać tylko na e-mail konta, dopóki nie zweryfikujesz domeny. */
+function hintFromResendError(error: unknown): string {
+  const raw =
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof (error as { message: unknown }).message === "string"
+      ? (error as { message: string }).message
+      : JSON.stringify(error);
+  const lower = raw.toLowerCase();
+  if (
+    lower.includes("only send") ||
+    lower.includes("testing emails") ||
+    lower.includes("verify a domain") ||
+    lower.includes("verify your domain")
+  ) {
+    return "Poczta: konto Resend jest w trybie testowym — albo dodaj i zweryfikuj domenę rweb.pl w Resend (Domains) i ustaw RESEND_FROM na adres z tej domeny, albo w Vercel ustaw CONTACT_FORM_TO na ten sam adres e-mail, na który masz konto w Resend.";
+  }
+  if (
+    lower.includes("from") &&
+    (lower.includes("invalid") || lower.includes("not verified") || lower.includes("domain"))
+  ) {
+    return "Nieprawidłowy nadawca: ustaw RESEND_FROM w Vercel na onboarding@resend.dev albo na zweryfikowany adres @rweb.pl z panelu Resend.";
+  }
+  return "Nie udało się wysłać wiadomości. Spróbuj później lub zadzwoń.";
+}
+
 export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -66,7 +93,7 @@ export async function POST(req: Request) {
   }
 
   const from =
-    process.env.RESEND_FROM?.trim() || "rweb.pl <onboarding@resend.dev>";
+    process.env.RESEND_FROM?.trim() || "onboarding@resend.dev";
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
@@ -84,9 +111,9 @@ export async function POST(req: Request) {
   });
 
   if (error) {
-    console.error("[contact]", error);
+    console.error("[contact] resend:", error);
     return NextResponse.json(
-      { error: "Nie udało się wysłać wiadomości. Spróbuj później lub zadzwoń." },
+      { error: hintFromResendError(error) },
       { status: 502 },
     );
   }
