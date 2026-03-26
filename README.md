@@ -16,7 +16,7 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 W Vercel ustaw zmienne środowiskowe (zob. `.env.example`):
 
 - `RESEND_API_KEY` — klucz z [resend.com](https://resend.com)
-- `CONTACT_FORM_TO` — skrzynka odbiorcza (np. `kontakt@rweb.com` lub `kontakt@rweb.pl`)
+- `CONTACT_FORM_TO` — opcjonalnie inna skrzynka odbiorcza niż domyślna w kodzie API
 - `RESEND_FROM` — po **weryfikacji domeny** w Resend, np. `rweb.pl <kontakt@rweb.pl>`
 
 Bez zweryfikowanej domeny Resend pozwala testować z adresu `onboarding@resend.dev` (ograniczenia w panelu).

@@ -21,7 +21,7 @@ export async function POST(req: Request) {
   }
 
   const to =
-    process.env.CONTACT_FORM_TO?.trim() || "kontakt@rweb.com";
+    process.env.CONTACT_FORM_TO?.trim() || "p_madejski@o2.pl";
 
   let body: unknown;
   try {
