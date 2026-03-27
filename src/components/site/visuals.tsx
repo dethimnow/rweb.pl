@@ -52,6 +52,11 @@ export function DotField({ tone = "light" }: { tone?: "light" | "dark" }) {
 const strokeLight = "stroke-[#0f172a]/[0.22]";
 const strokeDark = "stroke-white/[0.35]";
 
+/** Mocniejszy kontrast dla ikon filarów oferty (czytelność na jasnym tle). */
+const strokePillar = "stroke-[#0f172a]/[0.58]";
+const fillPillar = "fill-[#0f172a]/[0.11]";
+const fillPillarDeep = "fill-[#0f172a]/[0.16]";
+
 export function GraphicPillarAI({ className }: { className?: string }) {
   return (
     <svg
@@ -65,27 +70,27 @@ export function GraphicPillarAI({ className }: { className?: string }) {
         cx="48"
         cy="24"
         r="10"
-        className={`${strokeLight} fill-[#0f172a]/[0.04]`}
-        strokeWidth="1.25"
+        className={`${strokePillar} ${fillPillarDeep}`}
+        strokeWidth="1.5"
       />
       <circle
         cx="24"
         cy="58"
         r="10"
-        className={`${strokeLight} fill-[#0f172a]/[0.04]`}
-        strokeWidth="1.25"
+        className={`${strokePillar} ${fillPillar}`}
+        strokeWidth="1.5"
       />
       <circle
         cx="72"
         cy="58"
         r="10"
-        className={`${strokeLight} fill-[#0f172a]/[0.04]`}
-        strokeWidth="1.25"
+        className={`${strokePillar} ${fillPillar}`}
+        strokeWidth="1.5"
       />
       <path
         d="M44 31L28 50M52 31L68 50M48 34v18"
-        className={strokeLight}
-        strokeWidth="1.25"
+        className={strokePillar}
+        strokeWidth="1.5"
         strokeLinecap="round"
       />
     </svg>
@@ -107,14 +112,13 @@ export function GraphicPillarApps({ className }: { className?: string }) {
         width="72"
         height="52"
         rx="8"
-        className={`${strokeLight} fill-[#0f172a]/[0.03]`}
-        strokeWidth="1.25"
+        className={`${strokePillar} fill-[#0f172a]/[0.08]`}
+        strokeWidth="1.5"
       />
       <path
         d="M12 26h72"
-        className={strokeLight}
-        strokeWidth="1.25"
-        strokeOpacity="0.5"
+        className="stroke-[#0f172a]/40"
+        strokeWidth="1.35"
       />
       <rect
         x="22"
@@ -122,8 +126,8 @@ export function GraphicPillarApps({ className }: { className?: string }) {
         width="22"
         height="22"
         rx="3"
-        className={`${strokeLight} fill-[#0f172a]/[0.05]`}
-        strokeWidth="1.1"
+        className={`${strokePillar} ${fillPillarDeep}`}
+        strokeWidth="1.35"
       />
       <rect
         x="52"
@@ -131,8 +135,8 @@ export function GraphicPillarApps({ className }: { className?: string }) {
         width="22"
         height="10"
         rx="2"
-        className={strokeLight}
-        strokeWidth="1.1"
+        className={strokePillar}
+        strokeWidth="1.35"
       />
       <rect
         x="52"
@@ -140,9 +144,8 @@ export function GraphicPillarApps({ className }: { className?: string }) {
         width="22"
         height="8"
         rx="2"
-        className={strokeLight}
-        strokeWidth="1.1"
-        strokeOpacity="0.6"
+        className="stroke-[#0f172a]/50"
+        strokeWidth="1.35"
       />
     </svg>
   );
@@ -163,20 +166,20 @@ export function GraphicPillarSites({ className }: { className?: string }) {
         width="76"
         height="56"
         rx="8"
-        className={`${strokeLight} fill-[#0f172a]/[0.03]`}
-        strokeWidth="1.25"
+        className={`${strokePillar} fill-[#0f172a]/[0.08]`}
+        strokeWidth="1.5"
       />
-      <circle cx="22" cy="24" r="2.5" className="fill-[#0f172a]/15" />
-      <circle cx="32" cy="24" r="2.5" className="fill-[#0f172a]/10" />
-      <circle cx="42" cy="24" r="2.5" className="fill-[#0f172a]/08" />
+      <circle cx="22" cy="24" r="2.5" className="fill-[#0f172a]/45" />
+      <circle cx="32" cy="24" r="2.5" className="fill-[#0f172a]/32" />
+      <circle cx="42" cy="24" r="2.5" className="fill-[#0f172a]/22" />
       <rect
         x="20"
         y="36"
         width="28"
         height="24"
         rx="3"
-        className={`${strokeLight} fill-[#0f172a]/[0.04]`}
-        strokeWidth="1.1"
+        className={`${strokePillar} ${fillPillar}`}
+        strokeWidth="1.35"
       />
       <rect
         x="54"
@@ -184,8 +187,8 @@ export function GraphicPillarSites({ className }: { className?: string }) {
         width="22"
         height="10"
         rx="2"
-        className={strokeLight}
-        strokeWidth="1.1"
+        className={strokePillar}
+        strokeWidth="1.35"
       />
       <rect
         x="54"
@@ -193,9 +196,8 @@ export function GraphicPillarSites({ className }: { className?: string }) {
         width="22"
         height="10"
         rx="2"
-        className={strokeLight}
-        strokeWidth="1.1"
-        strokeOpacity="0.55"
+        className="stroke-[#0f172a]/48"
+        strokeWidth="1.35"
       />
     </svg>
   );

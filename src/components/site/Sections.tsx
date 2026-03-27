@@ -96,8 +96,8 @@ export function OfferPillars() {
             return (
             <article key={p.title} className={`${card} relative overflow-hidden`}>
               <GraphicCornerCards className="pointer-events-none absolute -right-4 -top-2 h-24 w-28 opacity-[0.55] sm:right-0 sm:top-0" />
-              <div className="mb-6 flex justify-center rounded-2xl border border-black/[0.06] bg-white/90 py-5 shadow-[0px_8px_30px_rgba(194,194,194,0.12)]">
-                <Art className="h-[4.5rem] w-auto" />
+              <div className="mb-6 flex justify-center rounded-2xl border border-[#0f172a]/[0.1] bg-gradient-to-b from-[#eef2f6] to-[#e2e8f0]/90 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0px_10px_28px_rgba(15,23,42,0.08)]">
+                <Art className="h-[4.75rem] w-auto" />
               </div>
               <h3 className="text-xl font-medium tracking-[-0.02em] text-[#0f172a]">
                 {p.title}

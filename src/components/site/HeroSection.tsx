@@ -3,6 +3,7 @@
 import { useMemo, useRef } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
+import { FakeTrustLogoStack } from "@/components/site/FakeTrustLogos";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/site";
 
 const HERO_VIDEO_SRC =
@@ -182,17 +183,7 @@ export function HeroSection() {
               <StarRow />
               <span>Zaufanie MŚP z całej Polski</span>
             </div>
-            <div className="flex -space-x-2" aria-hidden>
-              {["A", "B", "C", "D"].map((letter, i) => (
-                <div
-                  key={letter}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-neutral-300 to-neutral-500 text-xs font-bold text-white shadow-sm"
-                  style={{ zIndex: 4 - i }}
-                >
-                  {letter}
-                </div>
-              ))}
-            </div>
+            <FakeTrustLogoStack />
           </div>
         </motion.div>
       </motion.div>
